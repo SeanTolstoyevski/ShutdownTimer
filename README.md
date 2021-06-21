@@ -9,7 +9,7 @@ Compiled using MinGW with wxWidgets.
 ## How can I compile and develop?
 
 * A compiler compatible with wxWidgets
- * Due to multiplatform, the repo uses MinGW.
+	* Due to multiplatform, the repo uses MinGW.
 
 1. Clone the project: `git clone https://github.com/SeanTolstoyevski/ShutdownTimer`
 2. Compile wxWidgets as `MONOLITHIC=1`.
