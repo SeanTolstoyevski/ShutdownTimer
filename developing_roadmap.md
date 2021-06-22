@@ -1,4 +1,4 @@
-#What's planned for ShutdownTimer
+# What's planned for ShutdownTimer
 
 * Move build system to Scons
 * Generate shutdown trigger with Win32API
