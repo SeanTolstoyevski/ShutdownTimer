@@ -8,11 +8,13 @@ Compiled using MinGW with wxWidgets.
 
 ## How can I compile and develop?
 
+Dependencies:
+
 * A compiler compatible with wxWidgets
-	* Due to multiplatform, the repo uses MinGW.
+* Python, Scons
 
 1. Clone the project: `git clone https://github.com/SeanTolstoyevski/ShutdownTimer`
 2. Compile wxWidgets as `MONOLITHIC=1`.
 3. Copy lib and include folders of wxWidgets to the root directory of cloned this repo.
-4. Run `build_mingw.bat` after making changes.
+4. Run `scons` after making changes.
 
