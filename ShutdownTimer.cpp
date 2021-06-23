@@ -1,6 +1,6 @@
 #include "wx/wxprec.h"
 
-	#include "wx/wx.h"
+#include "wx/wx.h"
 
 const wxString appTitle = "ShutdownTimer";
 
@@ -14,13 +14,14 @@ public:
 	STFrame(const wxString &title);
 	void onPressed(wxCommandEvent &event);
 
+
+private:
 	wxChoice *secCho;
 	wxChoice *minuCho;
 	wxChoice *houCho;
+	wxCheckBox *forceMode;
 	wxButton *applyProcessBtn;
 
-
-private:
 	wxDECLARE_EVENT_TABLE();
 };
 
@@ -125,14 +126,13 @@ str.Add("60");
 	stSizer->Add(houLabel);
 	stSizer->Add(this->houCho);
 
+	this->forceMode = new wxCheckBox(panel, wxID_ANY, "Force mode (this mode is closes active processes)");
+	stSizer->Add(forceMode );
+
 	this->applyProcessBtn = new wxButton(panel, wxID_ANY, "Start shutdown timer");
 	stSizer->Add(applyProcessBtn);
 
 	panel->SetSizer( stSizer);
-
-
-
-
 
 // 	CreateStatusBar(2);
 // 	SetStatusText("");
@@ -158,11 +158,14 @@ void STFrame::onPressed(wxCommandEvent &event) {
 	if(hou != 0) {
 		total += hou*60*60;
 	}
-	system(wxString::Format("shutdown /s /t %d",
-		total));
+	wxString command = "shutdown ";
+	if(this->forceMode->IsChecked()) {
+		command += "/f ";
+	}
+	command += "/s /t %d";
+
+	system(wxString::Format(command, total));
 }
-
-
 
 	wxIMPLEMENT_APP(STApp);
 
